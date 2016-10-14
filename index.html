@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <meta charset="utf-8">
+    <title>The Psychic Game</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+<header>
+  <h1>The Guessing Game</h1>
+</header>
+<script>
+var randomNum = Math.floor(Math.random() * 100) + 1;
+var turns = 10;
+
+var guesses = 0;
+var message = "Guess The Letter From a (lower) to z (higher)";
+var letters = [
+               "a","b","c","d","e","f","g","h","i","j","k","l","m","n","o",
+               "p","q","r","s","t","u","v","w","x","y","z"
+               ];
+   var letterToGuess = "";
+   var higherOrLower = "";
+   var lettersGuessed;
+   var gameOver = false;
+
+while (turns > 0) {
+  var guess = prompt(message +
+      " You have " + turns + " guesses left.");
+  if (!guess) break;
+  guess = Number(guess);
+  if (guess == randomNum) {
+    document.write("<p>YOU WIN!</p>");
+    turns = 0;
+  } else {
+    message = "Nope.";
+    if (guess < randomNum) message += " Too small!";
+    if (guess > randomNum) message += " Too big!";
+    turns = turns - 1;
+  }
+}
+alert("The secret number was " + randomNum + ".");
+</script>
+</body>
+</html>
